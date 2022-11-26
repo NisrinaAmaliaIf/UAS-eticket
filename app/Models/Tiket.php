@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Tiket extends Model
 {
     protected $fillable = [
-        'judul', 'tanggal', 'deskripsi', 'pengisi', 'lokasi', 'harga'
+        'nama_konser', 'tgl_konser', 'deskripsi', 'guesstar', 'lokasi', 'harga','stok'
     ];
 }

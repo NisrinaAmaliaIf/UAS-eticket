@@ -37,12 +37,13 @@ class TiketController extends Controller
     public function store(Request $request)
     {
         $tiket = new Tiket();
-        $tiket->judul = $request->input('judul');
-        $tiket->tanggal = $request->input('tanggal');
+        $tiket->nama_konser = $request->input('nama_konser');
+        $tiket->tgl_konser = $request->input('tgl_konser');
         $tiket->deskripsi = $request->input('deskripsi');
-        $tiket->pengisi = $request->input('pengisi');
+        $tiket->guesstar = $request->input('guesstar');
         $tiket->lokasi = $request->input('lokasi');
         $tiket->harga = $request->input('harga');
+        $tiket->stok = $request->input('stok');
         $tiket->save();
 
         return response()->json([
@@ -51,10 +52,10 @@ class TiketController extends Controller
         ], 201);
 
         /*$table = Tiket::create([
-            "judul" => $request->judul,
-            "tanggal" => $request->tanggal,
+            "nama_konser" => $request->nama_konser,
+            "tgl_konser" => $request->tgl_konser,
             "deskripsi" => $request->deskripsi,
-            "pengisi" => $request->pengisi,
+            "guesstar" => $request->guesstar,
             "harga" => $request->harga
 
         ]);
@@ -110,12 +111,13 @@ class TiketController extends Controller
     {
         $tiket = tiket::find($id);
         if($tiket){
-            $tiket->judul = $request->judul ? $request->judul : $tiket->judul;
-            $tiket->tanggal = $request->tanggal ? $request->tanggal : $tiket->tanggal;
+            $tiket->nama_konser = $request->nama_konser ? $request->nama_konser : $tiket->nama_konser;
+            $tiket->tgl_konser = $request->tgl_konser ? $request->tgl_konser : $tiket->tgl_konser;
             $tiket->deskripsi = $request->deskripsi ? $request->deskripsi : $tiket->deskripsi;
-            $tiket->pengisi = $request->pengisi ? $request->pengisi : $tiket->pengisi;
+            $tiket->guesstar = $request->guesstar ? $request->guesstar : $tiket->guesstar;
             $tiket->lokasi = $request->lokasi ? $request->lokasi : $tiket->lokasi;
             $tiket->harga = $request->harga ? $request->harga : $tiket->harga;
+            $tiket->stok = $request->stok ? $request->stok : $tiket->stok;
             $tiket->save();
             return response()->json([
                 'status' => 200,

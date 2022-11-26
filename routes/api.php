@@ -23,14 +23,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //public routes
-Route::get('/tickets', [TiketController::class, 'index']);
-Route::get('/tickets/{id}', [TiketController::class, 'show']);
+Route::get('/ticket', [TiketController::class, 'index']);
+Route::get('/ticket/{id}', [TiketController::class, 'show']);
 
-Route::get('/transaksis', [TransaksiController::class, 'index']);
-Route::get('/transaksis/{id}', [TransaksiController::class, 'show']);
+Route::get('/transaksi', [TransaksiController::class, 'index']);
+Route::get('/transaksi/{id}', [TransaksiController::class, 'show']);
 
-Route::get('/customers', [CustomerController::class, 'index']);
-Route::get('/customers/{id}', [CustomerController::class, 'show']);
+Route::get('/customer', [CustomerController::class, 'index']);
+Route::get('/customer/{id}', [CustomerController::class, 'show']);
 
 //auth
 Route::post('register', [AuthController::class, 'register']);
@@ -42,17 +42,17 @@ Route::delete('/tickets{id}', [TiketController::class, 'destroy']);*/
 
 //protected
 Route::middleware('auth:sanctum')->group(function(){
-    Route::resource('tickets', TiketController::class)->except(
+    Route::resource('ticket', TiketController::class)->except(
         ['create','edit','index','show']
     );
 
     Route::post('/logout', [AuthController::class, 'logout']);
     
-    Route::resource('transaksis', TransaksiController::class)->except(
+    Route::resource('transaksi', TransaksiController::class)->except(
         ['create','edit','index','show']
     );
     
-    Route::resource('customers', CustomerController::class)->except(
+    Route::resource('customer', CustomerController::class)->except(
         ['create','edit','index','show']
     );
 
